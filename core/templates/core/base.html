@@ -1,0 +1,10 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+{% include 'core/partials/head.html' %}
+<body>
+  {% block content_body %}
+  {% endblock content_body %}
+  <script src="{% static 'core/js/main.js' %}"></script>
+</body>
+</html>

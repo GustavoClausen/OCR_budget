@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% block content_body %}
+<div class="container" style="max-width: 780px;">
+  <div class="container mt-5">
+    {% include 'budget/partials/logo.html' %}
+  </div>
+  <div class="container mt-5 mb-5">
+    <h2 class="mb-5">Gustavo, aqui está a sua cotação.</h2>
+    <div class="row mb-5">
+      <div class="col infos-label">
+        <div class="row">
+          <p>Pares de idioma</p>
+          <p>Português {% include 'budget/partials/arrow-right.html' %} Italiano</p>
+        </div>
+        <hr>
+        <div class="row">
+          <p>Quantidade de palavras</p>
+          <p>2.500 palavras</p>
+        </div>
+      </div>
+      <div class="col cost-label">
+        <p>Suas traduções custarão: <span>R$ 500,00</span></p>
+      </div>
+    </div>
+    <button id="new-budget">Fazer uma nova cotação</button>
+    <button id="delete-budget">Excluir cotação e deletar documentos</button>
+  </div>
+</div>
+{% endblock content_body %}

@@ -1,0 +1,106 @@
+{% extends 'core/base.html' %}
+
+{% block content_body %}
+  {% include 'core/partials/loading_modal.html' %}
+  <div class="container" style="max-width: 780px;">  
+    <div class="container mt-5">
+      {% include 'budget/partials/logo.html' %}
+    </div>
+    <div class="container mt-5 mb-5">
+      <h2 class="mb-5">Olá! Faça uma cotação.</h2>
+      <div>
+        <form action="{% url 'get_budget' %}" id="get-budget-form" method="post">
+          {% csrf_token %}
+          <div class="row mb-4">
+            <div class="col">
+              <div class="mb-3 sm">
+                <label for="inputFullName" class="form-label" >Nome completo</label>
+                <input type="text" class="form-control" id="inputFullName" placeholder="Insira seu nome completo" required maxlength="250">
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3">
+                <label for="inputEmail" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Insira um e-mail válido" required>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="mb-3">
+                <label for="inputWhatsapp" class="form-label">WhatsApp</label>
+                <input type="text" class="form-control" id="inputWhatsapp" placeholder="11 91234-5678" required>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="mb-3">
+                <label for="source-language" class="form-label">Idioma de Origem</label>
+                <select class="form-select" id="source-language" required>
+                  <option selected disabled value="pd">Selecionar</option>
+                  <option value="pt">Português</option>
+                  <option value="en">Inglês</option>
+                  <option value="it">Italiano</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3">
+                <label for="target-language" class="form-label">Idioma de Destino</label>
+                <select class="form-select" id="target-language" required>
+                  <option selected disabled value="pd">Selecione o idioma de origem</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <span class="form-label">Documentos</span>
+              <label for="files" id="label-file" class="mt-2 mb-2">
+                <div class="row text-center">
+                  <div class="col">
+                    <svg width="80" height="101" viewBox="0 0 80 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M41 49L12 51" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M41 49L79 53" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M79 53L71 88" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M71 88L40 94" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M40 93V56" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M40 56L79 53" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M40 56L12 51" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M11 51L13 79" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M13 79L40 94" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M40 49V55" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M62.7914 63.9954L56.6241 64.3763C55.1938 64.4646 54.1061 65.6939 54.1946 67.1219L54.251 68.0333C54.3395 69.4613 55.5706 70.5474 57.0009 70.4591L63.1682 70.0782C64.5985 69.9899 65.6862 68.7606 65.5977 67.3326L65.5413 66.4212C65.4528 64.9931 64.2217 63.9071 62.7914 63.9954Z" stroke="#21325B" stroke-width="2"/>
+                      <path d="M1 9C6.38145 17.2959 21.0907 33.0095 36.8764 29.4959L59 13.6848" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M1 9L26 1" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M26 1C30.7001 5 43.8799 13 59 13" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M15 13C17 12.4444 21.6 10.6667 24 8" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M21 19C22.3333 18.6667 25.4 17.4 27 15" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M28 23C29.8889 22.65 34.8667 21.04 37 16" stroke="#21325B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M39.4573 101L12 79L39.5243 93.966L71.9417 88.4286L75 88.8776L39.4573 101Z" fill="#21325B" fill-opacity="0.3"/>
+                    </svg>
+                    <p class="mt-2"><span class="form-label">Arraste e solte os documentos aqui</span></p>
+                  </div>
+                </div>
+              </label>
+              <input 
+                type="file"
+                name="files"
+                id="files"
+                accept=".pdf, .png, .jpg, .jpeg, .doc, .docx, .xls, .xlsx"
+                multiple
+              >
+            </div>
+          </div>
+          <button type="submit" class="btn">Fazer cotação</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function(){
+      $('#inputWhatsapp').mask('(00) 00000-0000');
+    });
+  </script>
+{% endblock content_body %}
