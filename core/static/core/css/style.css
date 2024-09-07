@@ -48,7 +48,8 @@ p.mt-2 {
   cursor: pointer;
 }
 
-div.container > button {
+div.container > a {
+  display: block;
   border-radius: 6px;
   margin-bottom: 1rem;
   padding: .5rem;
@@ -56,6 +57,8 @@ div.container > button {
   font-weight: 500;
   border: none;
   transition: all 200ms ease-in-out;
+  text-align: center;
+  text-decoration: none;
 }
 div.col.cost-label {
   display: flex;
