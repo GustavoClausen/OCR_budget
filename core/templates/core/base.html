@@ -1,7 +1,10 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
-{% include 'core/partials/head.html' %}
+<head>
+  {% include 'core/partials/head.html' %}
+  <title>{% block title %}{% endblock title %} | Orçamento</title>
+</head>
 <body>
   {% block content_body %}
   {% endblock content_body %}
