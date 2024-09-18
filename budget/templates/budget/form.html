@@ -30,8 +30,8 @@
           <div class="row mb-4">
             <div class="col">
               <div class="mb-3">
-                <label for="inputWhatsapp" class="form-label">WhatsApp</label>
-                <input type="text" class="form-control" id="inputWhatsapp" placeholder="11 91234-5678" required>
+                <label for="phone" class="form-label">WhatsApp</label>
+                <input type="text" class="form-control" id="phone" required>
               </div>
             </div>
           </div>
@@ -101,8 +101,18 @@
     </div>
   </div>
   <script>
-    $(document).ready(function(){
-      $('#inputWhatsapp').mask('(00) 00000-0000');
-    });
+    const input = document.querySelector("#phone");
+      window.intlTelInput(input, {
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/utils.js",
+        initialCountry: "auto",
+        autoFormat: true,
+        strictMode: true,
+        geoIpLookup: function(success, failure) {
+          fetch("https://ipapi.co/json")
+          .then(function(res) { return res.json(); })
+          .then(function(data) { success(data.country_code); })
+          .catch(function() { failure(); });
+        },
+      });
   </script>
 {% endblock content_body %}
