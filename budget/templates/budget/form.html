@@ -59,6 +59,7 @@
           <div class="row mb-4">
             <div class="col">
               <span class="form-label">Documentos</span>
+              <span class="form-label" id="qtd-docs"></span>
               <label for="files" id="label-file" class="mt-2 mb-2">
                 <div class="row text-center">
                   <div class="col">
@@ -101,18 +102,27 @@
     </div>
   </div>
   <script>
-    const input = document.querySelector("#phone");
-      window.intlTelInput(input, {
-        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/utils.js",
-        initialCountry: "auto",
+    const input = document.querySelector('#phone');
+    const inputFiles = document.querySelector('#files');
+    const labelQtdDocs = document.querySelector('#qtd-docs');
+    window.intlTelInput(input, {
+        utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/utils.js',
+        initialCountry: 'auto',
         autoFormat: true,
         strictMode: true,
         geoIpLookup: function(success, failure) {
-          fetch("https://ipapi.co/json")
+          fetch('https://ipapi.co/json')
           .then(function(res) { return res.json(); })
           .then(function(data) { success(data.country_code); })
           .catch(function() { failure(); });
         },
-      });
+      }
+    );
+
+    inputFiles.addEventListener('change', (e) => {
+      e.preventDefault();
+      const qtd = inputFiles.files.length
+      qtd > 1 ? labelQtdDocs.innerHTML = ` - ${qtd} inseridos`  : labelQtdDocs.innerHTML = ` - ${qtd} inserido`
+    });
   </script>
 {% endblock content_body %}
