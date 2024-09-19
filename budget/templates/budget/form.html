@@ -17,13 +17,13 @@
             <div class="col">
               <div class="mb-3 sm">
                 <label for="inputFullName" class="form-label" >Nome completo</label>
-                <input type="text" class="form-control" id="inputFullName" placeholder="Insira seu nome completo" required maxlength="250">
+                <input name="full-name" type="text" class="form-control" id="inputFullName" placeholder="Insira seu nome completo" required maxlength="250">
               </div>
             </div>
             <div class="col">
               <div class="mb-3">
                 <label for="inputEmail" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Insira um e-mail válido" required>
+                <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Insira um e-mail válido" required>
               </div>
             </div>
           </div>
@@ -31,7 +31,7 @@
             <div class="col">
               <div class="mb-3">
                 <label for="phone" class="form-label">WhatsApp</label>
-                <input type="text" class="form-control" id="phone" required>
+                <input name="phone" type="text" class="form-control" id="phone" required>
               </div>
             </div>
           </div>
@@ -39,10 +39,10 @@
             <div class="col">
               <div class="mb-3">
                 <label for="source-language" class="form-label">Idioma de Origem</label>
-                <select class="form-select" id="source-language" required>
+                <select name="source-language" class="form-select" id="source-language" required>
                   <option selected disabled value="pd">Selecionar</option>
                   <option value="pt">Português</option>
-                  <option value="en">Inglês</option>
+                  <option value="eng">Inglês</option>
                   <option value="it">Italiano</option>
                 </select>
               </div>
@@ -50,7 +50,7 @@
             <div class="col">
               <div class="mb-3">
                 <label for="target-language" class="form-label">Idioma de Destino</label>
-                <select class="form-select" id="target-language" required>
+                <select name="target-language" class="form-select" id="target-language" required>
                   <option selected disabled value="pd">Selecione o idioma de origem</option>
                 </select>
               </div>

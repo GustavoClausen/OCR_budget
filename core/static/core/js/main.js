@@ -15,7 +15,7 @@ function populateSelect(srcLanguage) {
   if (srcLanguage === 'pt') {
     const optEn = document.createElement('option');
     const optIt = document.createElement('option');
-    optEn.value = 'en';
+    optEn.value = 'eng';
     optEn.innerText = 'Inglês';
     optIt.value = 'it';
     optIt.innerText = 'Italiano';
