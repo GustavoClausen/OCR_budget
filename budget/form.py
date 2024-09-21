@@ -12,6 +12,7 @@ class BudgetForm(forms.ModelForm):
                 'accept': '.pdf, .png, .jpg, .jpeg, .doc, .docx, .xls, .xlsx',
             }
         ),
+        label='Documentos',
     )
 
     class Meta:
@@ -62,4 +63,12 @@ class BudgetForm(forms.ModelForm):
                     'id': 'target-language',
                 },
             ),
+        }
+
+        labels = {
+            'full_name': 'Nome completo',
+            'email': 'E-mail',
+            'whatsapp_number': 'WhatsApp',
+            'source_language': 'Idioma de Origem',
+            'target_language': 'Idioma de Destino',
         }

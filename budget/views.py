@@ -1,25 +1,21 @@
 from django.shortcuts import render
-from django.http import Http404
 
 from .form import BudgetForm
 
 
 def budget_form(request):
-    form = BudgetForm()
 
+    if request.POST:
+        form = BudgetForm(request.POST)
+    else:
+        form = BudgetForm()
     return render(request, 'budget/form.html', context={
         'form': form,
     })
 
 
 def get_budget(request):
-    if not request.POST:
-        return Http404()
-
-    for file in request.FILES.getlist('files'):
-        print(file)
-
-    return render(request, 'budget/result.html')
+    return None
 
 
 def delete_budget(request):

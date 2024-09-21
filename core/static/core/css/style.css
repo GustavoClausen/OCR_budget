@@ -128,6 +128,17 @@ div.container > p {
   font-weight: 700;
   font-size: 1.4rem;
 }
+#errors-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 2rem;
+  opacity: 0;
+  transition: all 200ms ease-in-out;
+}
+#errors-container > div {
+  margin-bottom: 2rem;
+}
 #new-budget {
   background-color: var(--color-primary-btn);
   color: #fff;

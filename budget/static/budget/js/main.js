@@ -3,6 +3,7 @@ const selectTargetLanguage = document.querySelector('#target-language');
 const getBudgetForm = document.querySelector('#get-budget-form');
 const optTargetLanguage = document.createElement('option');
 const inptFiles = document.querySelector('#files');
+const errorsContainer = document.querySelector('#errors-container');
 
 optTargetLanguage.value = "pd";
 optTargetLanguage.innerText = "Selecione o idioma de origem";
@@ -11,6 +12,12 @@ optTargetLanguage.selected = true;
 
 inptFiles.multiple = true;
 inptFiles.required = false;
+
+if (errorsContainer) {
+  setTimeout(() => {
+    errorsContainer.style.opacity = 1;
+  }, 200)
+}
 
 function clearOptions() {
   for(let option of selectTargetLanguage) {
