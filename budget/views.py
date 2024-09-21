@@ -6,7 +6,8 @@ from .form import BudgetForm
 def budget_form(request):
 
     if request.POST:
-        form = BudgetForm(request.POST)
+        print(request.POST)
+        form = BudgetForm(request.POST, request.FILES)
     else:
         form = BudgetForm()
     return render(request, 'budget/form.html', context={
