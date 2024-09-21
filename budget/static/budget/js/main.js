@@ -10,6 +10,7 @@ optTargetLanguage.disabled = true;
 optTargetLanguage.selected = true;
 
 inptFiles.multiple = true;
+inptFiles.required = false;
 
 function clearOptions() {
   for(let option of selectTargetLanguage) {

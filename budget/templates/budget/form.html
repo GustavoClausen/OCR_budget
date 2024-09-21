@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block title %}Formulário{% endblock title %}
 
@@ -115,4 +116,5 @@
       qtd > 1 ? labelQtdDocs.innerHTML = ` - ${qtd} inseridos`  : labelQtdDocs.innerHTML = ` - ${qtd} inserido`
     });
   </script>
+  <script src="{% static 'budget/js/main.js' %}"></script>
 {% endblock content_body %}
