@@ -80,7 +80,7 @@ selectSourceLanguage.addEventListener('change', (e) => {
 
 getBudgetForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  if(!formIsValid()) return alert('Preencha todos os campos corretamente.');
-  showModal();
+  // if(!formIsValid()) return alert('Preencha todos os campos corretamente.');
+  // showModal();
   getBudgetForm.submit();
 });
