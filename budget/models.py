@@ -7,7 +7,15 @@ class Budget(models.Model):
     full_name = models.CharField(max_length=250, null=False)
     email = models.EmailField(null=False)
     whatsapp_number = models.CharField(max_length=100, null=False)
-    source_language = models.CharField(max_length=100, null=False)
+    source_language = models.CharField(
+        choices=(
+            ('pt', 'Português'),
+            ('eng', 'Inglês'),
+            ('it', 'Italiano'),
+        ),
+        max_length=100,
+        null=False
+    )
     target_language = models.CharField(max_length=100, null=False)
     price = models.FloatField(null=False)
     total_words = models.IntegerField(null=False)
@@ -19,4 +27,4 @@ class File(models.Model):
         to=Budget,
         on_delete=models.CASCADE,
     )
-    file = models.FileField(null=False)
+    file = models.FileField(upload_to='document/', null=False, blank=False)

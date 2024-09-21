@@ -11,19 +11,19 @@
     <div class="container mt-5 mb-5">
       <h2 class="mb-5">Olá! Faça uma cotação.</h2>
       <div>
-        <form action="{% url 'get_budget' %}" id="get-budget-form" method="post">
+        <form action="{% url 'get_budget' %}" id="get-budget-form" method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="row mb-4">
             <div class="col">
               <div class="mb-3 sm">
                 <label for="inputFullName" class="form-label" >Nome completo</label>
-                <input name="full-name" type="text" class="form-control" id="inputFullName" placeholder="Insira seu nome completo" required maxlength="250">
+                {{ form.full_name }}
               </div>
             </div>
             <div class="col">
               <div class="mb-3">
                 <label for="inputEmail" class="form-label">E-mail</label>
-                <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Insira um e-mail válido" required>
+                {{ form.email }}
               </div>
             </div>
           </div>
@@ -31,7 +31,7 @@
             <div class="col">
               <div class="mb-3">
                 <label for="phone" class="form-label">WhatsApp</label>
-                <input name="phone" type="text" class="form-control" id="phone" required>
+                {{ form.whatsapp_number }}
               </div>
             </div>
           </div>
@@ -39,20 +39,16 @@
             <div class="col">
               <div class="mb-3">
                 <label for="source-language" class="form-label">Idioma de Origem</label>
-                <select name="source-language" class="form-select" id="source-language" required>
-                  <option selected disabled value="pd">Selecionar</option>
-                  <option value="pt">Português</option>
-                  <option value="eng">Inglês</option>
-                  <option value="it">Italiano</option>
-                </select>
+                {{ form.source_language }}
               </div>
             </div>
             <div class="col">
               <div class="mb-3">
                 <label for="target-language" class="form-label">Idioma de Destino</label>
-                <select name="target-language" class="form-select" id="target-language" required>
-                  <option selected disabled value="pd">Selecione o idioma de origem</option>
-                </select>
+                {{ form.target_language }}
+                {% for id, text in form.target_language.choices %}
+                  <option value="{{ id }}">{{text}}</option>
+                {% endfor %}
               </div>
             </div>
           </div>
@@ -87,13 +83,7 @@
                   </div>
                 </div>
               </label>
-              <input 
-                type="file"
-                name="files"
-                id="files"
-                accept=".pdf, .png, .jpg, .jpeg, .doc, .docx, .xls, .xlsx"
-                multiple
-              >
+              {{ form.files }}
             </div>
           </div>
           <button type="submit" class="btn">Fazer cotação</button>

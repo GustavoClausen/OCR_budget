@@ -1,6 +1,15 @@
 const selectSourceLanguage = document.querySelector('#source-language');
 const selectTargetLanguage = document.querySelector('#target-language');
 const getBudgetForm = document.querySelector('#get-budget-form');
+const optTargetLanguage = document.createElement('option');
+const inptFiles = document.querySelector('#files');
+
+optTargetLanguage.value = "pd";
+optTargetLanguage.innerText = "Selecione o idioma de origem";
+optTargetLanguage.disabled = true;
+optTargetLanguage.selected = true;
+
+inptFiles.multiple = true;
 
 function clearOptions() {
   for(let option of selectTargetLanguage) {
@@ -40,12 +49,19 @@ function showModal() {
 function formIsValid() {
   const inptSourceLang = document.querySelector('#source-language').value;
   const inptTargeLang = document.querySelector('#target-language').value;
-  const inptFiles = document.querySelector('#files');
   if(inptTargeLang === 'pd' || inptSourceLang === 'pd') return false
   if(inptFiles.files.length === 0) return false
   if(inptFiles.files.length === 0) return false
   return true
 }
+
+selectSourceLanguage.children[0].innerHTML = 'Selecione o idioma de origem';
+selectSourceLanguage.children[0].value = 'pd';
+selectSourceLanguage.children[0].selected = true;
+selectSourceLanguage.children[0].disabled = true;
+
+
+selectTargetLanguage.appendChild(optTargetLanguage)
 
 selectSourceLanguage.addEventListener('change', (e) => {
   clearOptions()
