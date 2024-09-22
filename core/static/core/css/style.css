@@ -135,6 +135,7 @@ div.container > p {
   padding: 2rem;
   opacity: 0;
   transition: all 200ms ease-in-out;
+  z-index: 999;
 }
 #errors-container > div {
   margin-bottom: 2rem;
