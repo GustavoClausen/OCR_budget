@@ -1,6 +1,7 @@
 from django import forms
 
 from .models import Budget
+from budget.utils.validation import is_valid_mime_type
 
 
 class BudgetForm(forms.ModelForm):
@@ -64,7 +65,6 @@ class BudgetForm(forms.ModelForm):
                 },
             ),
         }
-
         labels = {
             'full_name': 'Nome completo',
             'email': 'E-mail',
@@ -72,3 +72,12 @@ class BudgetForm(forms.ModelForm):
             'source_language': 'Idioma de Origem',
             'target_language': 'Idioma de Destino',
         }
+
+    def clean_files(self):
+        files = self.files.getlist('files')
+
+        for file in files:
+            if not is_valid_mime_type(file):
+                self.add_error('files', 'Tipo de arquivo inválido.')
+
+        return files
