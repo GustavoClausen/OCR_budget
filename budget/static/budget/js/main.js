@@ -5,6 +5,8 @@ const optTargetLanguage = document.createElement('option');
 const inptFiles = document.querySelector('#files');
 const errorsContainer = document.querySelector('#errors-container');
 
+import { creatToast } from './toastErrorFactory.js'
+
 optTargetLanguage.value = "pd";
 optTargetLanguage.innerText = "Selecione o idioma de origem";
 optTargetLanguage.disabled = true;
@@ -55,12 +57,39 @@ function showModal() {
 }
 
 function formIsValid() {
+  const prevContainer = document.querySelector('#errors-container');
+  if (prevContainer) prevContainer.remove();
+  let valid;
+  valid = true;
+  const errorContainer = document.createElement('div');
+  errorContainer.id = 'errors-container';
   const inptSourceLang = document.querySelector('#source-language').value;
   const inptTargeLang = document.querySelector('#target-language').value;
-  if(inptTargeLang === 'pd' || inptSourceLang === 'pd') return false
-  if(inptFiles.files.length === 0) return false
-  if(inptFiles.files.length === 0) return false
-  return true
+
+  if(inptTargeLang === 'pd') {
+    const toastError = creatToast('Idioma de Destino', 'Este campo é obrigatório.');
+    errorContainer.appendChild(toastError);
+    valid = false
+  }
+  if(inptSourceLang === 'pd') {
+    const toastError = creatToast('Idioma de Origem', 'Este campo é obrigatório.');
+    errorContainer.appendChild(toastError);
+    valid = false
+  }
+  if(inptFiles.files.length === 0) {
+    const toastError = creatToast('Documentos', 'Este campo é obrigatório.');
+    errorContainer.appendChild(toastError);
+    valid = false
+  }
+
+  if (!valid) {
+    document.body.appendChild(errorContainer);
+    const errorsContainer = document.querySelector('#errors-container');
+    setTimeout(() => {
+      errorsContainer.style.opacity = 1;
+    }, 200)
+  }
+  return valid
 }
 
 selectSourceLanguage.children[0].innerHTML = 'Selecione o idioma de origem';
@@ -80,7 +109,7 @@ selectSourceLanguage.addEventListener('change', (e) => {
 
 getBudgetForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  // if(!formIsValid()) return alert('Preencha todos os campos corretamente.');
-  // showModal();
+  if(!formIsValid()) return;
+  showModal();
   getBudgetForm.submit();
 });

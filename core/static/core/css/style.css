@@ -129,7 +129,7 @@ div.container > p {
   font-size: 1.4rem;
 }
 #errors-container {
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   padding: 2rem;

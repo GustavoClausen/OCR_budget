@@ -126,5 +126,6 @@
       qtd > 1 ? labelQtdDocs.innerHTML = ` - ${qtd} inseridos`  : labelQtdDocs.innerHTML = ` - ${qtd} inserido`
     });
   </script>
-  <script src="{% static 'budget/js/main.js' %}"></script>
+  <script src="{% static 'budget/js/toastErrorFactory.js' %}" type="module"></script>
+  <script src="{% static 'budget/js/main.js' %}" type="module"></script>
 {% endblock content_body %}
